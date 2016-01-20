@@ -1,0 +1,4 @@
+<%= form_for @image do |f|%>
+  <%= f.file_field :path, accept: 'image/png,image/gif,image/jpeg' %>
+  <%= f.submit %>
+<% end %>
