@@ -3,6 +3,7 @@ class ImagesController < ApplicationController
 
 
 
+
   def index
     @images = Image.all
     binding.pry
@@ -29,7 +30,6 @@ class ImagesController < ApplicationController
 
   def show
     @image = Image.find(params[:id])
-    # binding.pry
   end
 
   private
