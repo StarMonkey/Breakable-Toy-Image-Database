@@ -1,0 +1,3 @@
+<%= image_tag "/uploads/images/#{@image.path}" %>
+
+Uploaded By: <%= User.find(@image.user_id).email %>
