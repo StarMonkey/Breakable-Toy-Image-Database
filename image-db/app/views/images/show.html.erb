@@ -1,3 +1,7 @@
 <%= image_tag "/uploads/images/#{@image.path}" %>
 
 Uploaded By: <%= User.find(@image.user_id).email %>
+
+<% if user_signed_in? %>
+  <%= link_to "Edit Tags", edit_image_path(id: @image.id) %>
+<% end %>

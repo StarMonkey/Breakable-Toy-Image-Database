@@ -1,4 +1,4 @@
 class Imagetag < ActiveRecord::Base
-  has_one :image
-  has_one :tag
+  belongs_to :image
+  belongs_to :tag
 end

@@ -6,7 +6,6 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.all
-    binding.pry
   end
 
   def new
@@ -30,6 +29,38 @@ class ImagesController < ApplicationController
 
   def show
     @image = Image.find(params[:id])
+  end
+
+  def edit
+    @image = Image.find(params[:id])
+    @tags = @image.tags
+  end
+
+  def add_tag
+    @image = Image.find(params[:id])
+    tagname = params[:tag]
+    if(tagname.nil? == false && tagname != "")
+      data = Tag.where(name: tagname)
+      if(data.count == 0)
+        @tag = Tag.new
+        @tag.name = tagname
+        @tag.save
+      else
+        @tag = data[0]
+      end
+
+      if(@image.tags.where(id: @tag.id).count != 0)
+        flash[:alert] = @tag.errors.full_messages.join(". ") + "Image already has the tag #{tagname}."
+      else
+        @image.tags << @tag
+      end
+    end
+
+    redirect_to edit_image_path @image.id
+  end
+
+  def remove_tag
+    binding.pry
   end
 
   private
