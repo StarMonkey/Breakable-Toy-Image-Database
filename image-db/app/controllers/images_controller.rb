@@ -60,7 +60,6 @@ class ImagesController < ApplicationController
   end
 
   def remove_tag
-    binding.pry
   end
 
   private
