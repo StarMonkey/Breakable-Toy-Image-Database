@@ -1,0 +1,17 @@
+
+<h3>Current Tags</h3>
+<ul>
+  <% @tags.each do |tag| %>
+    <li>
+      <%= tag.name %> | <%= button_to "Remove", remove_tag_image_path(tag: tag), method: 'patch'  %>
+    </li>
+  <% end %>
+</ul>
+
+<br><br><br><br>
+<h5>Add Tags</h5>
+<%= form_tag add_tag_image_path, method: "patch" do %>
+  <%= label_tag :tag, "Tag Name:" %>
+  <%= text_field_tag :tag, "", autofocus: true %>
+  <%= submit_tag "Add Tag" %>
+<% end %>
